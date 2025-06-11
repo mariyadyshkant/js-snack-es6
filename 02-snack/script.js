@@ -44,11 +44,26 @@ const soccer_teams = [
     },
 ];
 
-// Devo generare dei numeri casuali da riassegnare alle key degli oggetti - vado con il for in
-for (let points in soccer_teams) {
-    soccer_teams[points] = Number(Math.floor(Math.random) * 101);
+// Devo generare dei numeri casuali da riassegnare alle key degli oggetti - vado con il for
+for (let i = 0; i < soccer_teams.length; i++) {
+    const thisSoccerTeam = soccer_teams[i];
+    thisSoccerTeam.points = Math.floor(Math.random() * 101);
+    thisSoccerTeam.fouls = Math.floor(Math.random() * 41);
+    // stampo i valori delle key con un ciclo for in
+    for (let key in thisSoccerTeam) {
+        console.log(key, thisSoccerTeam[key]);
+    }
 }
 
-
+// innizializzo un nuovo array all'interno del quale inserirò solo i nomi delle squadre e i falli subiti, sempre creando degli oggetti
+let foulsChart = [];
+console.log("Classifica dei falli subiti");
+for (let i = 0; i < soccer_teams.length; i++) {
+    foulsChart.push({
+        team_name: soccer_teams[i].team_name,
+        fouls: soccer_teams[i].fouls,
+    });
+    console.log(`${foulsChart[i].team_name}: ${foulsChart[i].fouls}`);
+}
 
 
